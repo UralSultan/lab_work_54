@@ -201,3 +201,26 @@ body {
         gap: 14px;
     }
 }
+.product-detail-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.product-detail-actions form {
+    margin: 0;
+}
+
+.product-edit-button {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 5px;
+    background: #1769aa;
+    color: white;
+    text-decoration: none;
+}

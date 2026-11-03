@@ -19,5 +19,18 @@
             <p><strong>Описание:</strong> {{ product.description|default:"Описание не добавлено." }}</p>
             <p><strong>Дата добавления:</strong> {{ product.created_at|date:"d.m.Y H:i" }}</p>
         </div>
+        <div class="product-detail-actions">
+            <a class="product-edit-button"
+               href="{% url 'product_edit' product.id %}">
+                Edit
+            </a>
+
+            <form method="post" action="{% url 'product_delete' product.id %}">
+                {% csrf_token %}
+                <button class="category-button delete-button" type="submit">
+                    Delete
+                </button>
+            </form>
+        </div>
     </section>
 {% endblock %}

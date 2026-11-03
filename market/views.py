@@ -23,6 +23,31 @@ def product_add_view(request):
 
     return render(request, 'market/product_add.html', {'form': form})
 
+def product_edit_view(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+
+        if form.is_valid():
+            form.save()
+            return redirect('product_detail', product_id=product.id)
+    else:
+        form = ProductForm(instance=product)
+
+    return render(request, 'market/product_edit.html', {
+        'form': form,
+        'product': product,
+    })
+
+
+def product_delete_view(request, product_id):
+    if request.method == 'POST':
+        product = get_object_or_404(Product, pk=product_id)
+        product.delete()
+
+    return redirect('products_list')
+
 def category_add_view(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)

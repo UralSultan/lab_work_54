@@ -1,0 +1,14 @@
+{% extends 'market/base.html' %}
+
+{% block title %}Редактировать {{ product.name }} — Маркет{% endblock %}
+
+{% block content %}
+    <h1>Редактировать товар</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Сохранить</button>
+    </form>
+{% endblock %}

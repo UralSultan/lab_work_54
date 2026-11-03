@@ -3,12 +3,10 @@
 {% block title %}Добавить товар — Маркет{% endblock %}
 
 {% block content %}
-    <h1>Добавить товар</h1>
+    <section class="product-form-card">
+        <h1>Добавить товар</h1>
+        <p class="product-form-description">Заполните форму товара.</p>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <button type="submit">Добавить товар</button>
-    </form>
+        {% include "partial/product_add_form.html" with button_value="Добавить" %}
+    </section>
 {% endblock %}

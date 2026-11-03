@@ -314,3 +314,109 @@ body {
         width: 100%;
     }
 }
+
+
+.product-form-card {
+    max-width: 720px;
+    margin: 8px auto 48px;
+    padding: 28px 32px;
+    background: #fff;
+    border: 1px solid #dce2e8;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgb(28 45 62 / 8%);
+}
+
+.product-form-card h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.product-form-description {
+    margin: 0 0 24px;
+    color: #697581;
+}
+
+.product-form-card .guest-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.product-form-card .guest-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.product-form-card .guest-form__field label {
+    color: #303943;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.product-form-card .guest-form__field input,
+.product-form-card .guest-form__field select,
+.product-form-card .guest-form__field textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5df;
+    border-radius: 6px;
+    color: #20252b;
+    font: inherit;
+}
+
+.product-form-card .guest-form__field textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.product-form-card .guest-form__field input:focus,
+.product-form-card .guest-form__field select:focus,
+.product-form-card .guest-form__field textarea:focus {
+    border-color: #579bb5;
+    outline: 2px solid rgb(87 155 181 / 18%);
+}
+
+.product-form-card .guest-form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.product-form-card .add-button,
+.product-form-card .back-button {
+    display: inline-block;
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 6px;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.product-form-card .add-button {
+    background: #1769aa;
+    color: #fff;
+}
+
+.product-form-card .back-button {
+    background: #edf1f4;
+    color: #303943;
+}
+
+.product-form-card .form-error {
+    margin: 0;
+    color: #c74440;
+    font-size: 14px;
+}
+
+@media (max-width: 580px) {
+    .product-form-card {
+        padding: 22px 18px;
+    }
+
+    .product-form-card h1 {
+        font-size: 24px;
+    }
+}

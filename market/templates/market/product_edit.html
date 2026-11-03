@@ -3,12 +3,10 @@
 {% block title %}Редактировать {{ product.name }} — Маркет{% endblock %}
 
 {% block content %}
-    <h1>Редактировать товар</h1>
+    <section class="product-form-card">
+        <h1>Редактировать товар</h1>
+        <p class="product-form-description">Измените нужные поля.</p>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <button type="submit">Сохранить</button>
-    </form>
+        {% include "partial/product_add_form.html" with button_value="Сохранить" %}
+    </section>
 {% endblock %}

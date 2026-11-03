@@ -1,11 +1,22 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product
+from .forms import CategoryForm
 
 
-def products_list(request):
+def products_view(request):
     products = Product.objects.select_related('category').all()
     return render(request, 'market/products_list.html', {'products': products})
 
-def product_detail(request, product_id):
+def product_view(request, product_id):
     product = get_object_or_404(Product.objects.select_related('category'),pk=product_id)
     return render(request, 'market/product_detail.html', {'product': product})
+
+def category_add_view(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('products_list')
+    else:
+        form = CategoryForm()
+    return render(request, 'market/category_add.html', {'form': form})

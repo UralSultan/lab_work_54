@@ -1,0 +1,66 @@
+[
+{
+  "model": "market.category",
+  "pk": 1,
+  "fields": {
+    "name": "Электроника",
+    "description": "Электроника Электроника"
+  }
+},
+{
+  "model": "market.category",
+  "pk": 2,
+  "fields": {
+    "name": "Посуда",
+    "description": "Посуда Посуда"
+  }
+},
+{
+  "model": "market.product",
+  "pk": 1,
+  "fields": {
+    "name": "Наушники Razer v3",
+    "description": "Игровые наушники",
+    "category": 1,
+    "created_at": "2026-11-03T06:35:54.263Z",
+    "price": "2000.00",
+    "image_url": "https://gamestore.kg/wp-content/uploads/2021/04/blakcsharkV3x-1.jpg.webp"
+  }
+},
+{
+  "model": "market.product",
+  "pk": 2,
+  "fields": {
+    "name": "Чайник Boseman",
+    "description": "Чайник заварочный",
+    "category": 2,
+    "created_at": "2026-11-03T06:37:35.620Z",
+    "price": "1000.00",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlg2fWbfBNdcxhUdk2V1WCZiuMrtEEboSAPQBLU5HtVz46HdD5tfDEetqE&s=10"
+  }
+},
+{
+  "model": "market.product",
+  "pk": 3,
+  "fields": {
+    "name": "Наушники Moondrops",
+    "description": "Наушники внутриканальные",
+    "category": 1,
+    "created_at": "2026-11-03T06:38:43.979Z",
+    "price": "520.00",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREyUraH0AeiEZSnIVNDw8nbKC2Ix4kxHG40CpHPcxjXg&s=10"
+  }
+},
+{
+  "model": "market.product",
+  "pk": 4,
+  "fields": {
+    "name": "Мышка Aula v5",
+    "description": "Мышка Bluetooth",
+    "category": 1,
+    "created_at": "2026-11-03T06:39:34.104Z",
+    "price": "500.00",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9hfwA1nCxnxRJYT6CksifvR5sa75wtRgG14uc6sr20A&s"
+  }
+}
+]

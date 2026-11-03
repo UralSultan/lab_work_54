@@ -1,0 +1,38 @@
+{% extends 'market/base.html' %}
+
+{% block title %}Товары — Маркет{% endblock %}
+
+{% block content %}
+    <h1>Товары</h1>
+
+    {% if products %}
+        <section class="product-grid">
+            {% for product in products %}
+                <article class="product-card">
+                    <img
+                        class="product-image"
+                        src="{{ product.image_url }}"
+                        alt="{{ product.name }}"
+                    >
+
+                    <div class="product-info">
+                        <h2>{{ product.name }}</h2>
+
+                        <p class="product-category">
+                            {% if product.category %}
+                                {{ product.category.name }}
+                            {% else %}
+                                Без категории
+                            {% endif %}
+                        </p>
+
+                        <p class="product-price">Price: {{ product.price }} </p>
+                        <a class="more-link" href="#">see more >>></a>
+                    </div>
+                </article>
+            {% endfor %}
+        </section>
+    {% else %}
+        <p>Пока товаров нет.</p>
+    {% endif %}
+{% endblock %}

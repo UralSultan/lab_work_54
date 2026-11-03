@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Маркет{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'market/style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="logo" href="{% url 'products_list' %}">Маркет</a>
+
+        <nav class="navigation">
+            <a href="#">Products</a>
+            <a href="#">Add Product</a>
+            <a href="#">Add Cart</a>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

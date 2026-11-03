@@ -1,0 +1,16 @@
+{% extends 'market/base.html' %}
+
+{% block title %}Редактировать категорию — Маркет{% endblock %}
+
+{% block content %}
+    <h1>Редактировать категорию: {{ category.name }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <a href="{% url 'categories_list' %}">Вернуться к списку категорий</a>
+{% endblock %}

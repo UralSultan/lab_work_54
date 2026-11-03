@@ -16,6 +16,14 @@
   }
 },
 {
+  "model": "market.category",
+  "pk": 3,
+  "fields": {
+    "name": "Кальяны",
+    "description": "Все для Кальянов"
+  }
+},
+{
   "model": "market.product",
   "pk": 1,
   "fields": {
@@ -61,6 +69,18 @@
     "created_at": "2026-11-03T06:39:34.104Z",
     "price": "500.00",
     "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9hfwA1nCxnxRJYT6CksifvR5sa75wtRgG14uc6sr20A&s"
+  }
+},
+{
+  "model": "market.product",
+  "pk": 5,
+  "fields": {
+    "name": "Чаша для табака",
+    "description": "Силиконовая чаша для табака",
+    "category": 3,
+    "created_at": "2026-11-03T07:18:55.569Z",
+    "price": "200.00",
+    "image_url": "https://www.stormhookah.com.ua/image/cache/catalog/665333366-silikonovaya-chasha-dlya-kalyana-classic-pod-kaloud-lotus-c-bortom-500x500-1000x1000.jpg"
   }
 }
 ]

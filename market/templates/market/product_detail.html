@@ -25,13 +25,7 @@
                href="{% url 'product_edit' product.id %}">
                 Edit
             </a>
-
-            <form method="post" action="{% url 'product_delete' product.id %}">
-                {% csrf_token %}
-                <button class="category-button delete-button" type="submit">
-                    Delete
-                </button>
-            </form>
+            <a class="category-button delete-button" href="{% url 'product_delete' product.id %}">Delete</a>
         </div>
     </section>
 {% endblock %}

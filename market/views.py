@@ -56,11 +56,13 @@ def product_edit_view(request, product_id):
 
 
 def product_delete_view(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
-        product = get_object_or_404(Product, pk=product_id)
         product.delete()
-
-    return redirect('products_list')
+        return redirect('products_list')
+    return render(request, 'market/product_confirm_delete.html', {
+        'product': product,
+    })
 
 def category_add_view(request):
     if request.method == 'POST':

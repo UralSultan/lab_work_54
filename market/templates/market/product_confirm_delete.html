@@ -1,0 +1,20 @@
+{% extends 'market/base.html' %}
+{% block title %}Удалить товар — Маркет{% endblock %}
+{% block content %}
+    <section class="product-form-card">
+        <h1>Подтверждение удаления</h1>
+        <p>Вы точно хотите удалить товар «{{ product.name }}»?</p>
+        <div class="category-actions">
+            <form method="post" action="{% url 'product_delete' product.id %}">
+                {% csrf_token %}
+                <button class="category-button delete-button" type="submit">
+                    Да
+                </button>
+            </form>
+            <a class="category-button edit-button"
+               href="{% url 'product_detail' product.id %}">
+                Нет
+            </a>
+        </div>
+    </section>
+{% endblock %}

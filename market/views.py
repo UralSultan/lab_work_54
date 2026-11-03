@@ -1,13 +1,25 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Category
-from .forms import CategoryForm, ProductForm
+from .forms import CategoryForm, ProductForm, ProductSearchForm
 
 
 def products_view(request):
-    products = (Product.objects.select_related('category').filter(quantity__gt=0).order_by(
-        'category__name',
-        'name'))
-    return render(request, 'market/products_list.html', {'products': products})
+    search_form = ProductSearchForm(request.GET or None)
+    products = (Product.objects.select_related('category').filter(quantity__gt=0).order_by('category__name',
+                                                                                           'name'))
+    if search_form.is_valid():
+        name = search_form.cleaned_data['name']
+
+        if name:
+            normalized_name = name.casefold()
+            products = [
+                product for product in products
+                if normalized_name in product.name.casefold()
+            ]
+    return render(request, 'market/products_list.html', {
+        'products': products,
+        'search_form': search_form,
+    })
 
 def product_view(request, product_id):
     product = get_object_or_404(Product.objects.select_related('category'),pk=product_id)

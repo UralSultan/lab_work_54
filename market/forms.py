@@ -12,3 +12,13 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'category', 'price', 'description', 'image_url', 'quantity']
+
+class ProductSearchForm(forms.Form):
+    name = forms.CharField(
+        label="Название товара",
+        required=False,
+        max_length=100,
+        widget=forms.TextInput(attrs={
+            "placeholder": "Введите название товара",
+        }),
+    )

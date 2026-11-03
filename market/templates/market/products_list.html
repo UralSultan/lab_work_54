@@ -5,6 +5,17 @@
 {% block content %}
     <h1>Товары</h1>
 
+<form class="search-form" method="get" action="{% url 'products_list' %}">
+            <div class="search-form__field">
+                {{ search_form.name.label_tag }}
+                {{ search_form.name }}
+            </div>
+            <div class="search-form__actions">
+                <button class="search-button" type="submit">Найти</button>
+                <a href="{% url 'products_list' %}" class="reset-button">Сбросить фильтр</a>
+            </div>
+        </form>
+
     {% if products %}
         <section class="product-grid">
             {% for product in products %}

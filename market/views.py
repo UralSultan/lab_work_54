@@ -4,7 +4,9 @@ from .forms import CategoryForm, ProductForm
 
 
 def products_view(request):
-    products = Product.objects.select_related('category').all()
+    products = (Product.objects.select_related('category').filter(quantity__gt=0).order_by(
+        'category__name',
+        'name'))
     return render(request, 'market/products_list.html', {'products': products})
 
 def product_view(request, product_id):

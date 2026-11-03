@@ -16,8 +16,9 @@
             </p>
 
             <p><strong>Цена:</strong> {{ product.price }}</p>
+            <p><strong>Остаток:</strong> {{ product.quantity }} </p>
             <p><strong>Описание:</strong> {{ product.description|default:"Описание не добавлено." }}</p>
-            <p><strong>Дата добавления:</strong> {{ product.created_at|date:"d.m.Y H:i" }}</p>
+            <p><strong>Дата добавления:</strong> {{ product.created_at|date:"d.m.Y H:i" }} </p>
         </div>
         <div class="product-detail-actions">
             <a class="product-edit-button"

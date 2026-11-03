@@ -22,6 +22,7 @@ class Product(models.Model):
     created_at = models.DateTimeField('Дата и время добавления', auto_now_add=True)
     price = models.DecimalField('Стоимость', max_digits=10, decimal_places=2)
     image_url = models.URLField('Изображение')
+    quantity = models.PositiveIntegerField('Остаток', default=0)
 
 
     class Meta:

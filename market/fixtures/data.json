@@ -12,14 +12,14 @@
   "pk": 2,
   "fields": {
     "name": "Посуда",
-    "description": "Посуда Посуда"
+    "description": "Посуда обычная"
   }
 },
 {
   "model": "market.category",
-  "pk": 3,
+  "pk": 4,
   "fields": {
-    "name": "Кальяны",
+    "name": "Кальян",
     "description": "Все для Кальянов"
   }
 },
@@ -31,8 +31,9 @@
     "description": "Игровые наушники",
     "category": 1,
     "created_at": "2026-11-03T06:35:54.263Z",
+    "image_url": "https://gamestore.kg/wp-content/uploads/2021/04/blakcsharkV3x-1.jpg.webp",
     "price": "2000.00",
-    "image_url": "https://gamestore.kg/wp-content/uploads/2021/04/blakcsharkV3x-1.jpg.webp"
+    "quantity": 2
   }
 },
 {
@@ -43,8 +44,9 @@
     "description": "Чайник заварочный",
     "category": 2,
     "created_at": "2026-11-03T06:37:35.620Z",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlg2fWbfBNdcxhUdk2V1WCZiuMrtEEboSAPQBLU5HtVz46HdD5tfDEetqE&s=10",
     "price": "1000.00",
-    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlg2fWbfBNdcxhUdk2V1WCZiuMrtEEboSAPQBLU5HtVz46HdD5tfDEetqE&s=10"
+    "quantity": 0
   }
 },
 {
@@ -55,32 +57,35 @@
     "description": "Наушники внутриканальные",
     "category": 1,
     "created_at": "2026-11-03T06:38:43.979Z",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREyUraH0AeiEZSnIVNDw8nbKC2Ix4kxHG40CpHPcxjXg&s=10",
     "price": "520.00",
-    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREyUraH0AeiEZSnIVNDw8nbKC2Ix4kxHG40CpHPcxjXg&s=10"
+    "quantity": 3
   }
 },
 {
   "model": "market.product",
   "pk": 4,
   "fields": {
-    "name": "Мышка Aula v5",
+    "name": "Мышка Aula v5.2",
     "description": "Мышка Bluetooth",
     "category": 1,
     "created_at": "2026-11-03T06:39:34.104Z",
-    "price": "500.00",
-    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9hfwA1nCxnxRJYT6CksifvR5sa75wtRgG14uc6sr20A&s"
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9hfwA1nCxnxRJYT6CksifvR5sa75wtRgG14uc6sr20A&s",
+    "price": "600.00",
+    "quantity": 5
   }
 },
 {
   "model": "market.product",
   "pk": 5,
   "fields": {
-    "name": "Чаша для табака",
-    "description": "Силиконовая чаша для табака",
-    "category": 3,
-    "created_at": "2026-11-03T07:18:55.569Z",
+    "name": "Чаша для Кальяна",
+    "description": "Силиконовая чаша для кальяна",
+    "category": 4,
+    "created_at": "2026-11-03T08:35:47.267Z",
+    "image_url": "https://www.stormhookah.com.ua/image/cache/catalog/665333366-silikonovaya-chasha-dlya-kalyana-classic-pod-kaloud-lotus-c-bortom-500x500-1000x1000.jpg",
     "price": "200.00",
-    "image_url": "https://www.stormhookah.com.ua/image/cache/catalog/665333366-silikonovaya-chasha-dlya-kalyana-classic-pod-kaloud-lotus-c-bortom-500x500-1000x1000.jpg"
+    "quantity": 2
   }
 }
 ]

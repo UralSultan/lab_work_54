@@ -1,0 +1,23 @@
+{% extends 'market/base.html' %}
+{% block title %}{{ product.name }} — Маркет{% endblock %}
+{% block content %}
+    <section class="product-detail">
+        <img class="detail-image" src="{{ product.image_url }}" alt="{{ product.name }}">
+        <div class="detail-info">
+            <h1>{{ product.name }}</h1>
+
+            <p>
+                <strong>Категория:</strong>
+                {% if product.category %}
+                    {{ product.category.name }}
+                {% else %}
+                    Без категории
+                {% endif %}
+            </p>
+
+            <p><strong>Цена:</strong> {{ product.price }}</p>
+            <p><strong>Описание:</strong> {{ product.description|default:"Описание не добавлено." }}</p>
+            <p><strong>Дата добавления:</strong> {{ product.created_at|date:"d.m.Y H:i" }}</p>
+        </div>
+    </section>
+{% endblock %}

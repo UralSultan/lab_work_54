@@ -9,11 +9,7 @@
         <section class="product-grid">
             {% for product in products %}
                 <article class="product-card">
-                    <img
-                        class="product-image"
-                        src="{{ product.image_url }}"
-                        alt="{{ product.name }}"
-                    >
+                    <img class="product-image" src="{{ product.image_url }}" alt="{{ product.name }}">
 
                     <div class="product-info">
                         <h2>{{ product.name }}</h2>
@@ -27,7 +23,7 @@
                         </p>
 
                         <p class="product-price">Price: {{ product.price }} </p>
-                        <a class="more-link" href="#">see more >>></a>
+                        <a class="more-link" href="{% url 'product_detail' product.id %}">see more > > ></a>
                     </div>
                 </article>
             {% endfor %}

@@ -105,3 +105,39 @@ body {
         grid-template-columns: 1fr;
     }
 }
+.product-detail {
+    display: flex;
+    gap: 32px;
+    margin-top: 20px;
+    padding: 24px;
+    background: white;
+    border: 1px solid #dce2e8;
+    border-radius: 8px;
+}
+
+.detail-image {
+    width: 44%;
+    max-height: 480px;
+    object-fit: contain;
+    background: #edf0f3;
+    border-radius: 5px;
+}
+
+.detail-info {
+    flex: 1;
+}
+
+.detail-info h1 {
+    margin-top: 0;
+}
+
+@media (max-width: 650px) {
+    .product-detail {
+        flex-direction: column;
+    }
+
+    .detail-image {
+        width: 100%;
+        max-height: 320px;
+    }
+}

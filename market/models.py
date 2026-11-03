@@ -17,7 +17,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField('Товар', max_length=120)
     description = models.TextField('Описание товара',blank=True)
-    category = models.ForeignKey('market.Category',null=True, related_name='category', on_delete=models.CASCADE,
+    category = models.ForeignKey('market.Category',null=True, related_name='category', on_delete=models.SET_NULL,
                                  verbose_name='Категория')
     created_at = models.DateTimeField('Дата и время добавления', auto_now_add=True)
     price = models.DecimalField('Стоимость', max_digits=10, decimal_places=2)

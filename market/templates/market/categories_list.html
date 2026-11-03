@@ -1,0 +1,28 @@
+{% extends 'market/base.html' %}
+
+{% block title %}Категории — Маркет{% endblock %}
+
+{% block content %}
+    <h1>Категории</h1>
+
+    <a href="{% url 'category_add' %} " class="category-button edit-button">Добавить категорию</a>
+
+    {% if categories %}
+        <section class="categories-list">
+            {% for category in categories %}
+                <article class="category-row">
+                    <div class="category-info">
+                        <h2>{{ category.name }}</h2>
+                    </div>
+
+                    <div class="category-actions">
+                        <a class="category-button edit-button" href="#">Edit</a>
+                        <a class="category-button delete-button" href="#">Delete</a>
+                    </div>
+                </article>
+            {% endfor %}
+        </section>
+    {% else %}
+        <p>Категорий пока нет.</p>
+    {% endif %}
+{% endblock %}

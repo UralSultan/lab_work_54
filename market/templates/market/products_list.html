@@ -42,4 +42,29 @@
     {% else %}
         <p>Пока товаров нет.</p>
     {% endif %}
+{% if is_paginated %}
+    <nav class="pagination" aria-label="Страницы товаров">
+        {% if page_obj.has_previous %}
+            <a href="?page=1{% if request.GET.name %}&name={{ request.GET.name|urlencode }}{% endif %}">
+                Первая
+            </a>
+            <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.name %}&name={{ request.GET.name|urlencode }}{% endif %}">
+                Назад
+            </a>
+        {% endif %}
+
+        <span>
+            Страница {{ page_obj.number }} из {{ paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if request.GET.name %}&name={{ request.GET.name|urlencode }}{% endif %}">
+                Вперёд
+            </a>
+            <a href="?page={{ paginator.num_pages }}{% if request.GET.name %}&name={{ request.GET.name|urlencode }}{% endif %}">
+                Последняя
+            </a>
+        {% endif %}
+    </nav>
+{% endif %}
 {% endblock %}

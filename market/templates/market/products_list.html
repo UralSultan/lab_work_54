@@ -32,9 +32,16 @@
                                 Без категории
                             {% endif %}
                         </p>
-
                         <p class="product-price">Price: {{ product.price }} </p>
-                        <a class="more-link" href="{% url 'product_detail' product.id %}">see more > > ></a>
+                        <form class="cart-add-form" method="post" action="{% url 'cart_add' product.id %}">
+                            {% csrf_token %}
+                            <label>
+                                Количество:
+                                <input type="number" name="quantity" min="1" max="{{ product.quantity }}" value="1" required>
+                            </label>
+                            <span class="cart-stock">В наличии: {{ product.quantity }}</span>
+                            <button class="cart-add-button" type="submit">В корзину</button>
+                        </form>
                     </div>
                 </article>
             {% endfor %}

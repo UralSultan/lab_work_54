@@ -1,0 +1,10 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+    <section class="cart-error-card">
+        <span class="cart-error-mark" aria-hidden="true">!</span>
+        <h1>Не удалось добавить товар</h1>
+        <p>{{ error }}</p>
+        <a class="cart-primary-link" href="{% url 'products_list' %}">Вернуться к товарам</a>
+    </section>
+{% endblock %}

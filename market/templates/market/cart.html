@@ -1,0 +1,62 @@
+{% extends 'market/base.html' %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block content %}
+    <section class="cart-card">
+        <div class="cart-heading">
+            <div>
+                <h1>Корзина</h1>
+                <p>Товары, которые вы добавили к заказу.</p>
+            </div>
+            <a class="cart-continue-link" href="{% url 'products_list' %}">Продолжить покупки</a>
+        </div>
+
+        {% if cart_items %}
+            <div class="cart-table-wrap">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Товар</th>
+                            <th scope="col">Цена</th>
+                            <th scope="col">Количество</th>
+                            <th scope="col">Сумма</th>
+                            <th scope="col"><span class="visually-hidden">Действие</span></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for item in cart_items %}
+                            <tr>
+                                <td class="cart-product-name">{{ item.product.name }}</td>
+                                <td>{{ item.product.price }}</td>
+                                <td>{{ item.quantity_of_product_in_cart }}</td>
+                                <td class="cart-line-total">{{ item.get_line_total }}</td>
+                                <td class="cart-action-cell">
+                                    <form method="post" action="{% url 'cart_remove' item.product_id %}">
+                                        {% csrf_token %}
+                                        <button class="category-button delete-button cart-remove-button" type="submit">
+                                            Удалить 1
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cart-summary">
+                <span>Итого</span>
+                <strong>{{ cart_total }}</strong>
+            </div>
+        {% else %}
+            <div class="cart-empty">
+                <h2>Корзина пока пуста</h2>
+                <p>Добавьте товары из каталога, и они появятся здесь.</p>
+                <a class="cart-primary-link" href="{% url 'products_list' %}">Перейти к товарам</a>
+            </div>
+        {% endif %}
+    </section>
+
+{% endblock %}

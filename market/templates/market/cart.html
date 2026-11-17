@@ -50,6 +50,40 @@
                 <span>Итого</span>
                 <strong>{{ cart_total }}</strong>
             </div>
+
+            <section class="order-form-section">
+                <div class="order-form-heading">
+                    <h2>Оформить заказ</h2>
+                    <p>Заполните контактные данные, чтобы завершить покупку.</p>
+                </div>
+
+                <form class="order-form" method="post" action="{% url 'order_create' %}">
+                    {% csrf_token %}
+
+                    {% if order_form.non_field_errors %}
+                        <div class="order-form__errors">
+                            {{ order_form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <div class="order-form__fields">
+                        {% for field in order_form %}
+                            <div class="order-form__field{% if field.name == 'address' %} order-form__field--wide{% endif %}">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+
+                                {% for error in field.errors %}
+                                    <p class="order-form__error">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <button class="cart-add-button order-form__submit" type="submit">
+                        Оформить заказ
+                    </button>
+                </form>
+            </section>
         {% else %}
             <div class="cart-empty">
                 <h2>Корзина пока пуста</h2>

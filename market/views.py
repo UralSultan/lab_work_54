@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from decimal import Decimal
-from .models import Product, Category, ProductsInCart
-from .forms import CategoryForm, ProductForm, ProductSearchForm
+from .models import Product, Category, ProductsInCart, Order, ProductOrder
+from .forms import CategoryForm, ProductForm, ProductSearchForm, OrderForm
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.views import View
 
@@ -166,6 +166,7 @@ class CartView(ListView):
             (item.get_line_total() for item in context['cart_items']),
             Decimal('0.00'),
         )
+        context['order_form'] = OrderForm()
         return context
 
 
@@ -183,3 +184,42 @@ class CartRemoveView(View):
             cart_item.delete()
 
         return redirect('cart')
+
+
+class OrderCreateView(CreateView):
+    model = Order
+    form_class = OrderForm
+    template_name = 'market/cart.html'
+    success_url = reverse_lazy('products_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cart_items = list(ProductsInCart.objects.select_related('product'))
+        context['cart_items'] = cart_items
+        context['cart_total'] = sum((item.get_line_total() for item in cart_items),Decimal('0.00'),)
+        context['order_form'] = context['form']
+        return context
+
+    def form_valid(self, form):
+        cart_items = list(ProductsInCart.objects.select_related('product'))
+        if not cart_items:
+            form.add_error(None, 'Корзина пуста.')
+            return self.form_invalid(form)
+        for item in cart_items:
+            if item.quantity_of_product_in_cart > item.product.quantity:
+                form.add_error(
+                    None,
+                    f'Недостаточно товара «{item.product.name}» на складе.',
+                )
+                return self.form_invalid(form)
+        self.object = form.save()
+        for item in cart_items:
+            ProductOrder.objects.create(
+                order=self.object,
+                product=item.product,
+                quantity=item.quantity_of_product_in_cart,
+            )
+            item.product.quantity -= item.quantity_of_product_in_cart
+            item.product.save(update_fields=['quantity'])
+        ProductsInCart.objects.all().delete()
+        return redirect(self.get_success_url())

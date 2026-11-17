@@ -1,5 +1,5 @@
 from django import forms
-from .models import Category, Product
+from .models import Category, Product, Order
 
 
 class CategoryForm(forms.ModelForm):
@@ -28,3 +28,14 @@ class ProductSearchForm(forms.Form):
             "placeholder": "Введите название товара",
         }),
     )
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['user', 'address', 'phone']
+        labels = {
+            'user': 'Имя',
+            'address': 'Адрес',
+            'phone': 'Телефон',
+        }

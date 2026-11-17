@@ -33,15 +33,28 @@
                             {% endif %}
                         </p>
                         <p class="product-price">Price: {{ product.price }} </p>
-                        <form class="cart-add-form" method="post" action="{% url 'cart_add' product.id %}">
-                            {% csrf_token %}
-                            <label>
-                                Количество:
-                                <input type="number" name="quantity" min="1" max="{{ product.quantity }}" value="1" required>
-                            </label>
-                            <span class="cart-stock">В наличии: {{ product.quantity }}</span>
-                            <button class="cart-add-button" type="submit">В корзину</button>
-                        </form>
+                        <p class="product-price">Price: {{ product.price }}</p>
+
+                        <p class="cart-stock">Можно добавить: {{ product.available_quantity }}</p>
+                        {% if product.available_quantity %}
+                            <form class="cart-add-form" method="post" action="{% url 'cart_add' product.id %}">
+                                {% csrf_token %}
+                                <label>
+                                    Количество:
+                                    <input
+                                        type="number"
+                                        name="quantity"
+                                        min="1"
+                                        max="{{ product.available_quantity }}"
+                                        value="1"
+                                        required
+                                    >
+                                </label>
+                                <button class="cart-add-button" type="submit">В корзину</button>
+                            </form>
+                        {% else %}
+                            <p class="cart-stock">Весь остаток уже в корзине</p>
+                        {% endif %}
                     </div>
                 </article>
             {% endfor %}

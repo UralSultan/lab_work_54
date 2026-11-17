@@ -29,6 +29,14 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        products = list(context['products'])
+        product_ids = [product.id for product in products]
+        cart_quantities = {
+            item.product_id: item.quantity_of_product_in_cart
+            for item in ProductsInCart.objects.filter(product_id__in=product_ids)}
+        for product in products:
+            product.available_quantity = (product.quantity - cart_quantities.get(product.id, 0))
+        context['products'] = products
         context['search_form'] = self.search_form
         return context
 

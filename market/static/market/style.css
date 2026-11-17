@@ -61,7 +61,7 @@ body {
 .product-image {
     width: 42%;
     min-height: 160px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 5px;
     background: #edf0f3;
 }

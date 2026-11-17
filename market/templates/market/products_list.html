@@ -33,7 +33,6 @@
                             {% endif %}
                         </p>
                         <p class="product-price">Price: {{ product.price }} </p>
-                        <p class="product-price">Price: {{ product.price }}</p>
 
                         <p class="cart-stock">Можно добавить: {{ product.available_quantity }}</p>
                         {% if product.available_quantity %}
@@ -55,6 +54,9 @@
                         {% else %}
                             <p class="cart-stock">Весь остаток уже в корзине</p>
                         {% endif %}
+                        <a class="more-link" href="{% url 'product_detail' product.id %}">
+                            Подробнее о товаре
+                        </a>
                     </div>
                 </article>
             {% endfor %}
